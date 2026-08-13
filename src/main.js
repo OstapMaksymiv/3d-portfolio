@@ -3,12 +3,60 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import * as THREE from "three";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import gsap from "gsap";
 const canvas = document.querySelector("#experience-canvas");
 
 const sizes = {
   height: window.innerHeight,
   width: window.innerWidth,
 };
+
+const modals = {
+  work: document.querySelector(".modal.work"),
+  about: document.querySelector(".modal.about"),
+  contact: document.querySelector(".modal.contact"),
+};
+document.querySelectorAll(".modal-exit-button").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const modal = e.target.closest(".modal");
+    hideModal(modal);
+  });
+});
+
+const showModal = (modal) => {
+  modal.style.display = "block";
+
+  gsap.set(modal, { opacity: 0 });
+  gsap.to(modal, {
+    opacity: 1,
+    duration: 0.5,
+  });
+};
+const hideModal = (modal) => {
+  modal.style.display = "block";
+  gsap.to(modal, {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      modal.style.display = "none";
+    },
+  });
+};
+
+const xAxisFans = [];
+const yAxisFans = [];
+
+const raycasterObjects = [];
+let currentIntersects = [];
+
+const socialLinks = {
+  GitHub: "https://github.com/OstapMaksymiv",
+  Linkedin: "https://www.linkedin.com/in/ostap-maksymiv-60909a259",
+  Telegram: "https://t.me/ostaprejo",
+};
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -86,9 +134,41 @@ videoElement.play();
 const videoTexture = new THREE.VideoTexture(videoElement);
 videoTexture.colorSpace = THREE.SRGBColorSpace;
 videoTexture.flipY = false;
-loader.load("/models/Room7-v1.glb", (glb) => {
+
+window.addEventListener("mousemove", (e) => {
+  pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+
+window.addEventListener("click", (e) => {
+  if (currentIntersects.length > 0) {
+    const object = currentIntersects[0].object;
+
+    Object.entries(socialLinks).forEach(([key, url]) => {
+      if (object.name.includes(key)) {
+        const newWindow = window.open();
+        newWindow.opener = null;
+        newWindow.location = url;
+        newWindow.target = "_blank";
+        newWindow.rel = "noopener noreferrer";
+      }
+    });
+    if (object.name.includes("Work_Button")) {
+      showModal(modals.work);
+    } else if (object.name.includes("About_Button")) {
+      showModal(modals.about);
+    } else if (object.name.includes("Contact_Button")) {
+      showModal(modals.contact);
+    }
+  }
+});
+
+loader.load("/models/Room9-v1.glb", (glb) => {
   glb.scene.traverse((child) => {
     if (child.isMesh) {
+      if (child.name.includes("Target")) {
+        raycasterObjects.push(child);
+      }
       if (child.name.includes("Water")) {
         child.material = new THREE.MeshBasicMaterial({
           color: 0x558bc8,
@@ -114,6 +194,17 @@ loader.load("/models/Room7-v1.glb", (glb) => {
               map: loadedTextures.day[key],
             });
             child.material = material;
+
+            if (child.name.includes("Fan")) {
+              if (
+                child.name.includes("Fan_2") ||
+                child.name.includes("Fan_4")
+              ) {
+                xAxisFans.push(child);
+              } else {
+                yAxisFans.push(child);
+              }
+            }
             if (child.material.map) {
               child.material.map.minFilter = THREE.LinearFilter;
             }
@@ -178,12 +269,36 @@ window.addEventListener("resize", () => {
 const render = () => {
   controls.update();
 
-  console.log(camera.position);
-  console.log("0000000000");
-  console.log(controls.target);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  xAxisFans.forEach((fan) => {
+    fan.rotation.x += 0.05;
+  });
+  yAxisFans.forEach((fan) => {
+    fan.rotateZ(0.05);
+    fan.rotateY(0.03);
+  });
 
+  raycaster.setFromCamera(pointer, camera);
+
+  // calculate objects intersecting the picking ray
+  currentIntersects = raycaster.intersectObjects(raycasterObjects);
+
+  raycasterObjects.forEach((object) => {
+    object.material.color.set(0xffffff);
+  });
+
+  for (let i = 0; i < currentIntersects.length; i++) {}
+
+  if (currentIntersects.length > 0) {
+    const currentIntersectObject = currentIntersects[0].object;
+
+    if (currentIntersectObject.name.includes("Pointer")) {
+      document.body.style.cursor = "pointer";
+    } else {
+      document.body.style.cursor = "default";
+    }
+  } else {
+    document.body.style.cursor = "default";
+  }
   renderer.render(scene, camera);
   window.requestAnimationFrame(render);
 };
