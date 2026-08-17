@@ -2,24 +2,488 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>room-portfolio</title>
+    <title>Maxi Room Folio</title>
+    <link rel="stylesheet" href="./src/style.scss" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="media/dark-favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/media/dark-favicon/favicon.svg"
+    />
+    <link rel="shortcut icon" href="media/dark-favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="media/dark-favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="media/dark-favicon/site.webmanifest" />
+
+    <meta name="language" content="English" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/media/og-image.webp" />
+
+    <meta
+      property="og:description"
+      content="I'm Ostap Max. This is my portfolio website! I'm currently a student at WSIZ studying computer science engineering and 3D. 
+      I love to take my combination of skills of technical and artsy skills to create beautiful things for the world that I am passionate about."
+    />
   </head>
   <body>
-    <div id="app"></div>
+    <div class="loading-screen">
+      <button class="loading-screen-button">Loading...</button>
 
+      <button class="no-sound-button"></button>
+
+      <p class="desktop-instructions instructions">
+        use left/right click and mouse wheel to navigate!
+      </p>
+      <p class="mobile-instructions instructions">
+        use one or two fingers to navigate!
+      </p>
+    </div>
+    <button class="mute-toggle-button toggle-buttons">
+      <svg
+        width="800"
+        height="800"
+        viewBox="0 0 800 800"
+        fill="none"
+        class="sound-svg sound-off-svg"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M366.064 567.04C430.064 624 508.464 663.04 545.584 650.56C612.784 625.6 623.984 490.557 623.984 397.117C623.984 371.197 623.984 341.76 620.464 312.641"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M596.134 200.963C592.038 188.521 585.44 177.047 576.746 167.252C568.051 157.456 557.443 149.545 545.578 144.002C506.218 129.282 422.698 175.999 353.578 237.119H302.375C268.427 237.119 235.87 250.606 211.865 274.611C187.86 298.616 174.375 331.171 174.375 365.12V429.12C174.365 453.795 181.488 477.952 194.887 498.672C208.285 519.395 227.387 535.802 249.894 545.92"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M720 77.4414L80 717.44"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <svg
+        width="800"
+        height="800"
+        viewBox="0 0 800 800"
+        fill="none"
+        class="sound-svg sound-on-svg"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M417.578 144.002C378.218 129.282 294.696 175.999 225.576 237.119H174.375C140.427 237.119 107.87 250.606 83.8653 274.611C59.8605 298.616 46.375 331.171 46.375 365.12V429.12C46.375 463.066 59.8605 495.626 83.8653 519.632C107.87 543.635 140.427 557.12 174.375 557.12H225.576C293.096 619.2 376.618 664.96 417.578 650.56C484.778 625.6 495.974 490.56 495.974 397.12C495.974 303.679 484.778 168.962 417.578 144.002Z"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M677.127 215.039C725.098 263.044 752.049 328.134 752.049 396C752.049 463.866 725.098 528.957 677.127 576.96"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M609.252 510.4C639.246 480.394 656.097 439.703 656.097 397.277C656.097 354.851 639.246 314.165 609.252 284.16"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+    <button class="theme-toggle-button toggle-buttons">
+      <svg
+        class="sun-svg"
+        width="800"
+        height="800"
+        viewBox="0 0 800 800"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M733.333 550H66.666M666.666 666.667H133.333M399.999 100V166.667M133.333 433.333H66.666M210.47 243.804L163.329 196.663M589.516 243.804L636.659 196.663M733.333 433.333H666.666M233.333 433.333C233.333 341.287 307.952 266.667 399.999 266.667C492.046 266.667 566.666 341.287 566.666 433.333"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <svg
+        class="moon-svg"
+        width="800"
+        height="800"
+        viewBox="0 0 800 800"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M446.619 254.869C449.832 245.908 462.666 245.908 465.879 254.869L474.669 279.371C475.699 282.239 477.983 284.495 480.886 285.511L505.696 294.193C514.766 297.368 514.766 310.04 505.696 313.215L480.886 321.897C477.983 322.913 475.699 325.169 474.669 328.038L465.879 352.54C462.666 361.5 449.832 361.5 446.619 352.54L437.829 328.038C436.799 325.169 434.516 322.913 431.612 321.897L406.803 313.215C397.733 310.04 397.733 297.368 406.803 294.193L431.612 285.511C434.516 284.495 436.799 282.239 437.829 279.371L446.619 254.869Z"
+          fill="currentColor"
+        />
+        <path
+          d="M543.581 363.74C545.724 357.766 554.278 357.766 556.421 363.74L562.281 380.073C562.968 381.986 564.491 383.49 566.427 384.166L582.964 389.956C589.014 392.073 589.014 400.52 582.964 402.636L566.427 408.423C564.491 409.103 562.968 410.606 562.281 412.52L556.421 428.853C554.278 434.826 545.724 434.826 543.581 428.853L537.721 412.52C537.034 410.606 535.511 409.103 533.574 408.423L517.037 402.636C510.987 400.52 510.987 392.073 517.037 389.956L533.574 384.166C535.511 383.49 537.034 381.986 537.721 380.073L543.581 363.74Z"
+          fill="currentColor"
+        />
+        <path
+          d="M592.31 109.728C596.963 96.7573 615.537 96.7573 620.19 109.728L636.14 154.184C637.627 158.335 640.937 161.602 645.14 163.073L690.15 178.825C703.283 183.421 703.283 201.764 690.15 206.36L645.14 222.112C640.937 223.583 637.627 226.85 636.14 231.002L620.19 275.457C615.537 288.428 596.963 288.428 592.31 275.457L576.36 231.002C574.873 226.85 571.563 223.583 567.36 222.112L522.35 206.36C509.217 201.764 509.217 183.421 522.35 178.825L567.36 163.073C571.563 161.602 574.873 158.335 576.36 154.184L592.31 109.728Z"
+          fill="currentColor"
+        />
+        <path
+          d="M100 448.657C100 587.47 215.807 700 358.66 700C468.637 700 562.58 633.31 600 539.277C570.363 552.803 537.27 560.363 502.363 560.363C375.38 560.363 272.441 460.337 272.441 336.947C272.441 285.342 290.446 237.824 320.685 200C195.834 217.85 100 322.377 100 448.657Z"
+          stroke-width="85"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+    <div class="overlay"></div>
     <div class="work modal">
-      <h1>Work</h1>
-      <button class="modal-exit-button">EXIT</button>
+      <div class="modal-wrapper">
+        <h1>~ Work ~</h1>
+        <div class="modal-content">
+          <div class="modal-content-wrapper">
+            <div class="work-project">
+              <div class="work-image-wrapper">
+                <img class="work-base-image" src="/images/roomzy.webp" alt="" />
+              </div>
+              <div class="paragraph-section">
+                <h2 class="modal-paragraph-header">Roomzy</h2>
+                <p class="modal-paragraph-text">
+                  Roomzy is a passion project built to simplify finding,
+                  booking, and managing accommodations. Using React and GSAP, I
+                  crafted a smooth, beautifully animated frontend that offers
+                  personalized recommendations and real-time availability
+                  checks. On the backend, Node.js, MongoDB, and WebSockets work
+                  together to ensure all booking data remains perfectly
+                  synchronized.
+                </p>
+                <p class="modal-paragraph-text sm-margin-top sm-font">
+                  Skills: React, Node.js, MongoDB, WebSockets, GSAP, Zustand,
+                  UI/UX Design, Prisma
+                </p>
+              </div>
+            </div>
+            <div class="work-project">
+              <div class="work-image-wrapper">
+                <img class="work-base-image" src="/images/group.webp" alt="" />
+              </div>
+              <div class="paragraph-section">
+                <h2 class="modal-paragraph-header">Kinnnda community leader</h2>
+                <p class="modal-paragraph-text">
+                  Organized several events and outreach with local communities
+                  and business to help international students familiarize with
+                  Ukrainian culture!
+                </p>
+                <p class="modal-paragraph-text sm-margin-top sm-font">
+                  Skills: Leadership, Communication, Community Building,
+                  Teamwork
+                </p>
+              </div>
+            </div>
+            <div class="work-project">
+              <div class="work-image-wrapper">
+                <img class="work-base-image" src="/images/gstr.webp" alt="" />
+              </div>
+              <div class="paragraph-section">
+                <h2 class="modal-paragraph-header">Gastroly</h2>
+                <p class="modal-paragraph-text">
+                  As my culmination project at UITM, I built Gastroly—a
+                  full-stack B2B marketplace designed to streamline connections
+                  between suppliers and buyers in the HoReCa sector. Using React
+                  Native and Node.js, I engineered a powerful search dashboard
+                  with geolocation filtering and architected a real-time chat
+                  via Socket.IO. It's a robust, highly interactive platform
+                  built for seamless enterprise use.
+                </p>
+                <p class="modal-paragraph-text sm-margin-top sm-font">
+                  Skills: React Native, Node.js, PostgreSQL, Socket.IO,
+                  Geolocation, Real-time Chat, REST APIs
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="modal-exit-button">
+          <svg
+            width="98"
+            height="96"
+            viewBox="0 0 98 96"
+            class="exit-button-svg"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+              fill="currentColor"
+            />
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="about modal">
-      <h1>About</h1>
-      <button class="modal-exit-button">EXIT</button>
+      <div class="modal-wrapper">
+        <h1>~ About ~</h1>
+        <div class="modal-content">
+          <div class="modal-content-wrapper">
+            <div class="paragraph-section">
+              <img
+                class="side-images left"
+                src="/images/profile_kitty.webp"
+                alt=""
+              />
+              <img
+                class="side-images right"
+                src="/images/emoji_man.webp"
+                alt=""
+              />
+              <div class="image-wrapper">
+                <img
+                  class="base-image"
+                  src="/images/profile_pic.webp"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="modal-paragraph-header">
+                <h2>
+                  Developer, creative, AI explorer, & bug-snipper at heart ❤️
+                </h2>
+              </div>
+              <p class="modal-paragraph-text">
+                I'm Ostap Maksymiv, but you can call me Max. I recently
+                completed my BS in Information Technology at the University of
+                Information Technology and Management (UITM). I'm currently
+                based in Poland, and I love combining my strong technical
+                problem-solving skills with my creative side to engineer
+                efficient, scalable, and user-friendly solutions. In my free
+                time, you'll definitely catch me expressing my creativity
+                through video editing—I love making clips using After Effects
+                and CapCut.
+              </p>
+              <p class="modal-paragraph-text sm-margin-top">
+                Recently, I've also started diving into the exciting world of
+                <span style="font-family: Arial, sans-serif">3D</span> graphics!
+                When I'm not editing videos or modeling in
+                <span style="font-family: Arial, sans-serif">3D</span>, I might
+                be tinkering with new tech, building side projects, or
+                experimenting with AI models.
+              </p>
+              <div class="modal-paragraph-header">
+                <h2>What I'm up to:</h2>
+              </div>
+              <ul>
+                <li class="list-item">
+                  I'm currently working as a Junior Full Stack Developer at
+                  Innowise, where I build scalable backend APIs with NestJS and
+                  craft seamless user interfaces using React.
+                </li>
+                <li class="list-item">
+                  I'm also looking for summer internships related to software
+                  design with frontend side where I could put imagination and
+                  inspiration
+                </li>
+                <li class="list-item">
+                  Course work is a bit intense! You'll find me in the quiet
+                  rooms studio doing work.
+                </li>
+              </ul>
+              <h2 class="modal-paragraph-header-2">
+                Portfolio credits and Inspiration:
+              </h2>
+              <ul>
+                <!-- <li class="list-text-2">
+                  Music is called Cosmic Star Candy by Daystar Project!
+                </li> -->
+                <li class="list-text-2">
+                  This portfolio was inspired by andrewwoan with tutorial video
+                  how to make it all.
+                </li>
+                <li class="list-text-2">
+                  Also the piano in this portfolio works!! Give it a try and
+                  play a song!
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <button class="modal-exit-button">
+          <svg
+            width="98"
+            height="96"
+            viewBox="0 0 98 96"
+            class="exit-button-svg"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+              fill="currentColor"
+            />
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="contact modal">
-      <h1>Contact</h1>
-      <button class="modal-exit-button">EXIT</button>
+      <div class="modal-wrapper">
+        <h1>~ Hello there;) ~</h1>
+        <div class="modal-content">
+          <div class="modal-content-wrapper">
+            <div class="paragraph-section">
+              <h2>
+                Feel free to connect if I mech you <span>expectations</span>
+              </h2>
+              <div class="contact-btn-wrapper">
+                <a
+                  class="contact-link"
+                  href="mailto:ostapera@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    class="contact-svg mail"
+                    width="800"
+                    height="800"
+                    viewBox="0 0 800 800"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M656.85 209.817C608.726 166.348 527.66 150 400 150C272.34 150 191.272 166.348 143.15 209.817M656.85 209.817C700.01 248.804 716.666 309.608 716.666 400C716.666 591.177 642.156 650 400 650C157.843 650 83.333 591.177 83.333 400C83.333 309.608 99.9903 248.804 143.15 209.817M656.85 209.817L447.14 419.527C421.103 445.56 378.893 445.56 352.86 419.527L143.15 209.817"
+                      stroke="currentColor"
+                      stroke-width="66.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  class="contact-link"
+                  href="https://www.instagram.com/ostaprejo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    class="contact-svg instagram"
+                    width="512"
+                    height="512"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <g stroke-width="0">
+                      <path
+                        fill="#8e79a3"
+                        d="M186.5 1.1c-49 1.7-65.9 3.6-85 10-30.2 10.1-55.6 28.9-72 53.4-14.1 21.1-21.9 43.3-26 74.1-4.6 34.3-4.6 200.5 0 234.8 4.7 35.2 13.9 58.8 32 82.1 22.2 28.5 59 48.2 98.3 52.4 43.1 4.7 175 5.2 233.7 1 47.7-3.4 85.8-22.6 110.8-55.8 16.2-21.4 26-47.2 30.2-79.6 4.6-34.5 4.6-200.5 0-235-.9-6.6-2.7-17-4.2-23-12.1-51.3-45.2-88.2-93.8-104.4-19.8-6.6-35.3-8.3-89-10.1-33.8-1.1-101.9-1.1-135 .1m162 40.9c10.5.5 22.7 1.5 27.2 2 44.9 5.7 77.4 33.9 88.8 77.2 5.8 22.1 7.4 52.1 7.4 134.8s-1.6 112.7-7.4 134.8c-11.4 43.1-43.6 71.3-88.5 77.1-19.1 2.5-56 3.6-122.5 3.5-71.9-.1-111.6-1.6-126.7-4.9-36.7-8-64-31.4-76.2-65.2-6.4-18-8.4-33-9.7-74.3-1.3-38.3-.5-153.8 1.1-172.5 1.9-22 6.9-42.4 13.7-56C69 72.1 94.7 52.7 125 45.9c9.2-2 29.5-3.6 62.5-4.9 27-1.1 136.2-.4 161 1"
+                      />
+                      <path
+                        fill="#8e79a3"
+                        d="M384.3 92.8c-25.1 9-27.2 43.2-3.5 54.9 8.1 4 18.3 4 26.4 0 10.7-5.3 16.3-14.4 16.3-26.7 0-8.5-2.1-14.2-7.4-20.3-7.2-8.1-21.3-11.7-31.8-7.9m-147.8 39.7c-32.5 5.1-62.2 22.9-81.7 49-7.1 9.5-16.9 29.1-19.8 39.5-10.2 36.9-4.2 73.9 17 105.6 6.8 10.1 22.3 25.6 32.4 32.4 31.7 21.2 68.7 27.2 105.6 17 10.5-2.9 30-12.7 39.6-19.9 4.5-3.3 11.6-9.7 15.9-14.2 40.7-43.3 45.8-107.1 12.5-156.4-6.8-10.1-18.4-22.2-28.5-29.7-9.5-7.1-29.1-16.9-39.5-19.8-17.5-4.8-37.1-6.1-53.5-3.5m41.8 41.9c28.7 8.5 49.5 29.2 58.4 58.3 2.3 7.8 2.6 10.4 2.6 23.3s-.3 15.5-2.6 23.3c-8.9 29.1-29.3 49.5-58.4 58.4-7.8 2.3-10.4 2.6-23.3 2.6s-15.5-.3-23.3-2.6c-35.2-10.8-59-40.3-61.4-76.3-2.8-43.5 27.4-81.4 71.4-89.4 8.8-1.6 26.9-.4 36.6 2.4"
+                      />
+                    </g>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ostap-maksymiv-60909a259"
+                  ><svg
+                    class="contact-svg linkedin"
+                    width="512"
+                    height="512"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <g stroke-width="0">
+                      <path
+                        fill="#8e79a3"
+                        d="M125.5 1.1C67.7 8.7 18.8 52.2 4.6 108.6 0 126.9-.1 130.1.2 262.5c.4 123.9.4 125.1 2.6 134.2 13.9 59.5 57.5 102 115.7 112.9 9.4 1.8 17.1 1.9 138 1.9 118.7 0 128.7-.1 137.3-1.8 59.2-11.4 104.7-57 115.8-116.2 1.8-9.4 1.9-17.1 1.9-138 0-119.4-.1-128.6-1.8-137C497.8 59.2 456 16.5 396.5 2.7 387.7.6 385.3.6 260 .4c-72.3-.1-130.5.2-134.5.7m265.6 33.2c45.9 11.4 78 44.5 87.1 89.7 1 5.1 1.3 32.9 1.3 132 0 134.7.2 129.9-5.2 146.5-12.5 38.7-45.4 67.5-86.3 75.7-9.5 1.9-254.5 1.9-264 0-46.1-9.2-81-44-90.1-89.7-2.1-10.4-2.1-254.6 0-265C43 77.8 79.9 41.2 124 34c4.1-.6 8.2-1.3 9-1.5s57.8-.2 126.5-.1c112.3.2 125.7.4 131.6 1.9"
+                      />
+                      <path
+                        fill="#8e79a3"
+                        d="M132.1 81.6c-25.3 6.8-41 33.1-34.6 57.9 6.7 25.6 32.9 41.5 58 35 25.6-6.7 41.5-32.9 35-57.8-6.7-25.9-33.3-41.9-58.4-35.1m18.2 31.8c10.3 4.3 12.8 17.7 4.8 25.7-6.5 6.5-15.7 6.5-22.2 0-12.4-12.3 1.3-32.5 17.4-25.7m-44.8 80c-4.1 1.8-8.3 6.9-9 10.9-.3 1.8-.4 47.8-.3 102.4.3 98.4.3 99.2 2.4 101.9 1.1 1.5 3.3 3.7 4.8 4.8 2.7 2 3.9 2.1 40.6 2.1s37.9-.1 40.6-2.1c1.5-1.1 3.7-3.3 4.8-4.8 2.1-2.7 2.1-3.3 2.1-104.6s0-101.9-2.1-104.6c-1.1-1.5-3.3-3.7-4.8-4.8-2.6-2-4.1-2.1-39.4-2.3-29-.2-37.3 0-39.7 1.1M160 304v80h-32V224h32zm57.5-110.6c-4.1 1.8-8.3 6.9-9 10.9-.3 1.8-.4 47.8-.3 102.4.3 98.4.3 99.2 2.4 101.9 1.1 1.5 3.3 3.7 4.8 4.8 2.7 2 3.9 2.1 40.6 2.1s37.9-.1 40.6-2.1c1.5-1.1 3.7-3.3 4.8-4.8 2-2.7 2.1-4.1 2.6-59.3l.5-56.5 2.8-2.4c1.5-1.3 3.7-2.4 4.7-2.4s3.2 1.1 4.7 2.4l2.8 2.4.5 56.5c.5 55.2.6 56.6 2.6 59.3 1.1 1.5 3.3 3.7 4.8 4.8 2.7 2 3.9 2.1 40.6 2.1s37.9-.1 40.6-2.1c1.5-1.1 3.7-3.3 4.8-4.8 2.1-2.7 2.1-3.6 2.1-72.4 0-69 0-69.8-2.2-78.1-12.5-46.9-60.2-75.3-106.3-63.3l-7.4 2-2.9-2.2c-2.8-2-3.9-2.1-39.5-2.3-29-.2-37.3 0-39.7 1.1m55.2 32.3c2.1 6 9.3 11.2 15.4 11.3 1.5 0 7-2.2 12.2-5 10.5-5.5 19.2-8 28.2-8 19.8 0 39.5 12 48.8 29.7 6.5 12.4 6.7 14.3 6.7 75.5V384h-32v-46.4c0-43.4-.1-46.8-2-52.8-5.4-17.6-23.5-30.2-40.7-28.5-8.5.9-12.5 2.3-19.5 7-6.6 4.4-13.6 13.3-16 20.5-.9 2.7-1.3 16.7-1.6 51.9l-.3 48.3H240V224h16c14.4 0 16.1.2 16.7 1.7"
+                      />
+                    </g>
+                  </svg>
+                </a>
+                <a href="https://github.com/OstapMaksymiv"
+                  ><svg
+                    class="contact-svg github"
+                    width="512"
+                    height="512"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <g stroke-width="0">
+                      <path
+                        fill="#8e79a3"
+                        d="M47.5 42.9c-3.5 7.3-8.4 22-10.7 32.2-2 9.1-2.3 13-2.3 31.9 0 22 1.2 31.6 6 47.2l1.4 4.8-4.3 5.3C22.3 183 9.1 212 4.1 238.1c-7.3 38.2-4.2 90.8 7.4 125.7 10.6 31.6 31.9 57.3 61.1 73.8 14.4 8.1 48 20.4 67.8 24.9 34.6 7.7 91.6 11.4 147.8 9.5 71.7-2.4 121.7-14 155.2-36 43.5-28.5 62.6-64.7 67.6-128.4 4.6-59.2-7.3-106.4-36.1-143.3l-4.9-6.2 1.9-6.3c4.7-15.3 5.5-22.5 5.6-44.8 0-17.3-.4-23.2-1.9-30-2.4-11-6.1-22.8-9.8-31.1l-3-6.7-6.6.4c-36.7 2.2-60.8 12.6-102.9 44.4l-6.3 4.7-5.9-1.3c-47.3-11-112.9-11.1-162.8-.4-5.1 1.1-10.1 2-11.2 2s-5.9-3-10.8-6.7C145 73.8 127.9 62.5 117 56.5 97.9 46 80.3 41.1 55.9 39.6l-6.6-.3zm144 207.7c54.1 6.7 74.8 6.8 125 .5 46.8-5.9 55.4-6 71.4-1.4 14.8 4.2 26.1 12.2 36.1 25.4 11.6 15.5 17.6 32.7 18.7 54.1 1 19.4-2.1 36.3-9.5 52.1-9.3 20-21.5 32.3-41.8 42.5-15.6 7.8-39.4 14.4-63.4 17.4-14.9 1.9-129.1 1.9-144 0-31.5-4-59.1-13-77-25.2-6.3-4.3-16.1-14.3-20.9-21.3-12-17.6-18.1-41.2-16.8-65.5 1.1-21.4 7.1-38.6 18.7-54.1 12-15.9 27.3-25 47.3-28.1 8-1.3 25.6-.1 56.2 3.6"
+                      />
+                      <path
+                        fill="#8e79a3"
+                        d="M148.5 277.3c-9.1 3.6-16 10.5-22 21.8-10 19-10.5 49.1-1.1 69.3 10.6 23.1 31.4 31.7 48.3 20 22.8-15.7 30.1-60 14.6-89.7-4.9-9.5-14.1-18.8-20.7-21-5.7-1.9-14.7-2.1-19.1-.4m195.5.4c-6.2 2.3-15.6 12-20.3 21-5.5 10.5-8 21.4-8 35.3-.3 51.4 38.9 78.7 64.5 44.8 12-15.8 16.4-41.7 10.9-64.2-3.8-15.9-13.6-30.4-23.7-35.6-6.2-3.1-16.8-3.7-23.4-1.3"
+                      />
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="modal-exit-button">
+          <svg
+            width="98"
+            height="96"
+            viewBox="0 0 98 96"
+            class="exit-button-svg"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(-0.696845 0.717222 0.717222 0.696845 83.1709 0)"
+              fill="currentColor"
+            />
+            <rect
+              width="115.92"
+              height="17.889"
+              rx="8.94448"
+              transform="matrix(0.73406 0.679084 0.679084 -0.73406 0 13.1318)"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <div id="experience">

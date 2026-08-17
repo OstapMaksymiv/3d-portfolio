@@ -1,0 +1,13 @@
+$base-pink: #d6a8c7;
+$base-black: #090909;
+$base-white: #fdfdfd;
+$base-light-purple: #e8d9d8;
+$base-purple: #8e79a3;
+$base-blue: #7bacdc;
+$base-pink-light: #e7d0d7;
+$base-dark-purple: #7a3d54;
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
